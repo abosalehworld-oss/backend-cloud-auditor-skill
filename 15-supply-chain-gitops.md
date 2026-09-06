@@ -1,4 +1,4 @@
-# Phase 17: Supply Chain Security & GitOps 📦
+# Phase 15: Supply Chain Security & GitOps 📦
 
 > **Objective:** Evaluate the integrity of the software delivery pipeline. SolarWinds and Log4j proved that attackers don't need to hack your application; they just need to hack your dependencies or your deployment pipeline. This phase audits SLSA compliance, SBOM generation, and GitOps maturity.
 
@@ -79,12 +79,12 @@ WHAT TO CHECK:
 
 ---
 
-## 🚦 PHASE 17 GATE — MANDATORY CHECKLIST
+## 🚦 PHASE 15 GATE — MANDATORY CHECKLIST
 
 You MUST complete ALL items before proceeding:
 
 ```
-PHASE 17 GATE CHECKLIST:
+PHASE 15 GATE CHECKLIST:
   □ [S1.1-1.2] SBOM generation and Image Cryptographic Signing (Cosign) verified
   □ [S2.1] GitOps (Pull model) vs CI (Push model) evaluated
   □ [S2.2] Terraform state security and IaC static analysis verified
@@ -97,8 +97,10 @@ PHASE 17 GATE CHECKLIST:
 
 ```
 ═══════════════════════════════════════════════════════
-  ✅ PHASE 17 COMPLETE: Supply Chain Security & GitOps
+  ✅ PHASE 15 COMPLETE: Supply Chain Security & GitOps
   📊 Findings: [X] Critical | [Y] High | [Z] Medium | [W] Low
   📋 Gate Status: [PASSED/FAILED] ([checked]/5 items)
 ═══════════════════════════════════════════════════════
 ```
+
+> ⏹️ **STOP POINT** — Output Phase 15 report. Wait for user before Phase 16.

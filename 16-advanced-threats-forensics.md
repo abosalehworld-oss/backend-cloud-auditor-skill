@@ -95,3 +95,23 @@ WHY IT MATTERS:
 
 SEVERITY: 🟠 HIGH — Application exhaustion and scraping.
 ```
+
+---
+
+## 🚦 PHASE 16 GATE — MANDATORY CHECKLIST
+
+```
+PHASE 16 GATE CHECKLIST:
+  □ [APT-1] KMS and key rotation verified
+  □ [APT-2] Egress filtering assessed
+  □ [APT-3] Audit log immutability checked
+  □ [APT-4] Insider threat controls verified
+  □ [APT-5] Serverless security reviewed
+  □ [APT-6] WAF and bot management assessed
+  □ Web search results included with URLs
+  □ Minimum code citations provided
+  □ Files examined list produced
+```
+
+> ⏹️ **STOP POINT** — Output Phase 16 report. Wait for user before Phase 17.
+
