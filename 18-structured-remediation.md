@@ -222,3 +222,25 @@ After ALL fixes are applied, you MUST re-run the relevant analysis:
 > The full cycle is: 
 > Analyze (1-16) → Delivery Report (17) → Fix (18) → Re-Analyze (1-16) → New Delivery Report (17) → ✅ DONE.
 ```
+
+---
+
+## ⛔ ANTI-PREMATURE-CELEBRATION RULE
+
+> **Phase 18 is the REMEDIATION phase ONLY — NOT the final phase.**
+> There is still a remaining phase after this one (Phase 19: Pre-Deployment Sentry Validation).
+> **Do NOT declare the project "done", "production-ready", or "ready for deployment" after completing Phase 18.**
+> You MUST continue to Phase 19 and await user confirmation before proceeding.
+
+---
+
+## 💡 OPTIONAL: Run Actual Analysis Tools
+
+> If execution tools are available in your environment, prefer running actual commands over mental simulation:
+> - `npm audit` / `pip-audit` / `cargo audit` (Dependency scanning)
+> - `docker scan` / `trivy image` (Container security)
+> - `terraform validate` / `terraform plan` (IaC verification)
+> - `kubectl auth can-i --list` (K8s RBAC verification)
+> - `bandit -r .` (Python security) / `gosec ./...` (Go security)
+>
+> If these tools are NOT available, document this limitation in the sprint report.
