@@ -26,7 +26,8 @@ When installed, your AI agent becomes an **Ethical Hacker (Red Team), Cloud Arch
 - 🕵️ **Advanced Threats & Forensics** — KMS, egress, WORM, serverless, insider threats
 - ✅ **Final Delivery + Fresh-Eyes Re-Analysis** — Executive summary, matrices, mandatory second pass
 - 🔧 **Structured Remediation (Phase 18)** — Sprint-based fixes with Hacker Mindset R6 verification
-- 🛡️ **Pre-Deployment Sentry Validation (Phase 19)** — Real-traffic testing, attack simulation, deployment verdict
+- 🔴 **Automated Offensive Testing (Phase 19)** — AI runs real security tools (Nuclei, sqlmap, Trivy, ffuf, ScoutSuite) with mandatory database freshness and anti-cheating enforcement
+- 🛡️ **Pre-Deployment Sentry Validation (Phase 20)** — Real-traffic testing, attack simulation, deployment verdict
 
 ---
 
@@ -67,15 +68,15 @@ npx skills add https://github.com/abosalehworld-oss/backend-cloud-auditor-skill 
 
 ---
 
-## 🛡️ Anti-Laziness Enforcement System
+## 🛡️ Anti-Laziness Enforcement System (10 Layers)
 
 This skill is engineered to **force thorough review** even from AI agents that tend to skip steps.
 
-### 1. Proof-of-Work Citations (153 Minimum)
+### 1. Proof-of-Work Citations (193 Minimum)
 Every finding MUST include exact file path, line numbers, and copied code snippet.
 
-### 2. Mandatory Phase Gates (19 Gates)
-Each of the 19 phases has a structured checklist that must be completed with evidence before the AI can proceed.
+### 2. Mandatory Phase Gates (20 Gates)
+Each of the 20 phases has a structured checklist that must be completed with evidence before the AI can proceed.
 
 ### 3. Mandatory STOP Points
 After each phase, the AI MUST output a structured report and wait for acknowledgment.
@@ -88,6 +89,18 @@ After all analysis phases, the AI performs a second independent pass — proven 
 
 ### 6. Hacker Mindset R6
 After every fix, the AI verifies from an attacker's perspective that no new vulnerabilities were introduced.
+
+### 7. Anti-Premature-Celebration
+AI is blocked from declaring "done" after remediation — offensive testing and Sentry phases still remain.
+
+### 8. 🆕 Mandatory `run_command` Proof (Phase 19)
+Every security tool execution MUST be via real terminal commands — fabricating tool output = cheating.
+
+### 9. 🆕 Maximum 2 MANUAL_CHECK (Phase 19)
+AI cannot claim all tools are unavailable — at most 2 checks can be manual.
+
+### 10. 🆕 Mandatory Database Freshness (Phase 19)
+AI MUST update vulnerability databases before scanning + web search for latest tool versions.
 
 ---
 
@@ -114,7 +127,8 @@ backend-cloud-auditor-skill/
 ├── 16-advanced-threats-forensics.md      ← Phase 16: APT, insider threats
 ├── 17-final-delivery-readiness.md        ← Phase 17: Summary + Fresh-Eyes
 ├── 18-structured-remediation.md          ← Phase 18: Sprint fixes + R6
-└── 19-pre-deployment-sentry-validation.md ← Phase 19: Sentry + traffic testing
+├── 19-automated-offensive-testing.md     ← Phase 19: Nuclei, sqlmap, Trivy, ffuf, hey
+└── 20-pre-deployment-sentry-validation.md ← Phase 20: Sentry + traffic testing
 ```
 
 ---
