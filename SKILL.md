@@ -8,7 +8,7 @@ description: >
   and PRE-DEPLOYMENT SENTRY VALIDATION (real-traffic error tracking with step-by-step user guidance).
   Enforces MANDATORY fresh-eyes re-analysis (second independent pass to catch missed vulnerabilities),
   offensive web searches for current-year zero-days, exploit vectors, and CVEs,
-  raised citation minimums per phase (153 total minimum), hacker-mindset post-fix verification (Rule R6),
+  raised citation minimums per phase (193 total minimum), hacker-mindset post-fix verification (Rule R6),
   and cross-phase references to prevent AI hallucination, laziness, and ensure cutting-edge security auditing.
   Built to prevent AI from skipping checks, making false claims, or producing incomplete analysis.
 ---
@@ -44,7 +44,7 @@ Your training data is inherently outdated. To maintain a sharp offensive edge, y
 > **DO NOT rely on past knowledge. An Ethical Hacker only succeeds using today's exploit data.**
 
 ### Rule 3: MANDATORY PHASE GATES & STOP POINTS
-This review has **19 phases**. Each phase has a **GATE** — a mandatory checklist that must be completed with evidence BEFORE proceeding to the next phase.
+This review has **20 phases**. Each phase has a **GATE** — a mandatory checklist that must be completed with evidence BEFORE proceeding to the next phase.
 1. Output the phase report with all findings.
 2. Output the phase gate checklist (all items checked/unchecked).
 3. **STOP and wait for user acknowledgment** before proceeding.
@@ -243,7 +243,7 @@ Citations must represent GENUINE analysis, not padding to meet minimums:
 | 16 | Adv. Threats & Forensics | `16-advanced-threats-forensics.md` | KMS, Egress, WORM, Serverless, Insider |
 | 17 | Final Delivery + Fresh-Eyes | `17-final-delivery-readiness.md` | Executive Summary, Matrices, **FRESH-EYES re-analysis**, Sign-offs |
 | 18 | Structured Remediation | `18-structured-remediation.md` | Sprint-based execution, verification, and hacker-mindset post-fix check |
-| 19 | Pre-Deployment Sentry | `19-pre-deployment-sentry-validation.md` | Sentry setup, real-traffic testing, attack simulation, final deployment verdict |
+| 20 | Pre-Deployment Sentry | `19-pre-deployment-sentry-validation.md` | Sentry setup, real-traffic testing, attack simulation, final deployment verdict |
 
 ---
 
@@ -256,7 +256,7 @@ Citations must represent GENUINE analysis, not padding to meet minimums:
 5. Continue through all phases sequentially.
 6. **At Phase 17**: After the standard report, perform the **MANDATORY FRESH-EYES RE-ANALYSIS** (Rule 9).
 7. After fixes (Phase 18): Perform **Hacker Mindset Verification** on all modified code.
-8. After fixes verified: Execute **Phase 19: Sentry Validation** — real-traffic testing with error tracking.
+8. After fixes verified: Execute **Phase 20: Sentry Validation** — real-traffic testing with error tracking.
 
 ### Complete Workflow Cycle:
 ```
@@ -296,7 +296,7 @@ When executing each phase, you MUST read the corresponding file for detailed ins
 - Phase 16: Read `16-advanced-threats-forensics.md` in this skill folder
 - Phase 17: Read `17-final-delivery-readiness.md` in this skill folder
 - Phase 18 *(optional)*: Read `18-structured-remediation.md` in this skill folder
-- Phase 19: Read `19-pre-deployment-sentry-validation.md` in this skill folder
+- Phase 19: Read `19-automated-offensive-testing.md` in this skill folder`n- Phase 20: Read `20-pre-deployment-sentry-validation.md` in this skill folder
 
 ---
 
