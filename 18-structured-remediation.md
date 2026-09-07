@@ -3,6 +3,15 @@
 > **Objective:** Execute code and infrastructure fixes for all findings from Phases 1-17 in a structured, verifiable, and auditable manner. **Every fix must be PROVEN with before/after code.** 
 > This phase is only triggered when the user explicitly requests fixes after reviewing the Phase 17 Final Delivery report.
 
+### ⚠️ MANDATORY POST-FIX VERIFICATION
+After EVERY code modification, you MUST:
+1. Call `view_file` on the modified file to confirm your edit was applied correctly
+2. Run the project's build command (if available) to verify no syntax/compilation errors
+3. Run the project's test suite (if available) to verify no regressions
+4. If any verification fails, fix the issue BEFORE proceeding to the next fix
+
+❌ Claiming "fixed" without view_file verification = UNVERIFIED = POTENTIALLY BROKEN
+
 ---
 
 ## ⚠️ CRITICAL RULES FOR REMEDIATION

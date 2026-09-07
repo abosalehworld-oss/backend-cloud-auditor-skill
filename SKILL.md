@@ -141,6 +141,71 @@ Every finding must be classified:
 | 🟡 MEDIUM | 🟡 | Degraded performance, minor security concern, configuration debt |
 | 🔵 LOW | 🔵 | Code smell, best practice violation, optimization opportunity |
 
+### Rule 11: FRESH-EYES TOOL CALL VERIFICATION (ANTI-CHEATING)
+The Fresh-Eyes Re-Analysis MUST include actual `view_file` tool calls for every critical file.
+Reading from memory/context is NOT a fresh analysis — it is the SAME stale analysis.
+
+```
+❌ CHEATING: Writing Fresh-Eyes findings without calling view_file on each critical file
+❌ CHEATING: Claiming "I re-examined file X" without a corresponding view_file tool call
+❌ CHEATING: Producing Fresh-Eyes results immediately after the summary without tool calls
+✅ REQUIRED: Call view_file for EACH critical file BEFORE writing Fresh-Eyes findings
+✅ REQUIRED: List each view_file call as proof in your Fresh-Eyes section
+✅ REQUIRED: Minimum 1 view_file call per critical category (auth, DB, API, IAM, infra)
+
+VERIFICATION: If your Fresh-Eyes section does NOT have corresponding view_file tool
+calls preceding it in the conversation, the Fresh-Eyes is INVALID and MUST be re-executed.
+
+⚠️ WHY: AI agents consistently shortcut Fresh-Eyes by writing from memory.
+   This defeats the purpose. The view_file requirement forces ACTUAL re-reading.
+```
+
+### Rule 12: CONTEXT DECAY PROTECTION
+AI context windows degrade over long conversations. To prevent analysis quality decline:
+
+```
+✅ Every phase MUST contain at least 1 view_file tool call
+✅ If 3+ phases passed since your last view_file on a core file, re-read it
+✅ NEVER claim line numbers without a recent view_file for that file
+❌ NEVER analyze an entire phase purely from memory
+❌ NEVER produce a phase report with 0 view_file tool calls
+```
+
+### Rule 13: REMEDIATION BUILD VERIFICATION
+After applying code fixes in Phase 18 (Structured Remediation), you MUST verify changes:
+
+```
+✅ After EACH fix: Re-read the modified file with view_file to confirm edits applied
+✅ After EACH sprint: Run the project's build/compile command if available
+✅ After ALL fixes: Run the project's test suite if available
+❌ NEVER claim "fix applied successfully" without re-reading the file with view_file
+❌ NEVER skip build verification — a fix that breaks the build is worse than the bug
+❌ NEVER move to the next sprint if the current sprint has build/syntax errors
+
+VERIFICATION COMMANDS (attempt after each sprint):
+  - Python: python -m py_compile <modified_file> or pytest
+  - Node/TS: npm run build or tsc --noEmit
+  - Go: go build ./...
+  - Java/Kotlin: mvn compile or gradle build
+  - .NET: dotnet build
+  - PHP: php -l <modified_file> or phpunit
+  - Ruby: ruby -c <modified_file> or rspec
+  - General: At minimum, view_file on every modified file to verify correctness
+```
+
+### Rule 14: CITATION INTEGRITY — NO PADDING
+Citations must represent GENUINE analysis, not padding to meet minimums:
+
+```
+✅ Each citation must reference a SPECIFIC line number verified by view_file
+✅ Positive citations ("done correctly") must explain WHY with technical depth
+✅ Each citation must teach the reader something non-obvious about the code
+❌ NEVER pad citations with vague praise like "Good use of X" without explaining why
+❌ NEVER cite the same code pattern multiple times to inflate count
+❌ NEVER cite trivial boilerplate (imports, empty constructors, etc.) as findings
+❌ NEVER count a citation unless you have the actual file content from view_file
+```
+
 ---
 
 ## 📋 19-PHASE ARCHITECTURE OVERVIEW

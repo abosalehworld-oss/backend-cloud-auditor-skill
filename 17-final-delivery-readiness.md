@@ -225,6 +225,10 @@ SPRINT 3 — BACKLOG (Tech Debt):
 
 ## 🔍 MANDATORY FRESH-EYES RE-ANALYSIS (EXECUTE NOW)
 
+> **⚠️ TOOL CALL REQUIREMENT:** You MUST call `view_file` on each critical file below.
+> Writing findings from memory is CHEATING and invalidates the entire review.
+> Your Fresh-Eyes section MUST be preceded by view_file tool calls as proof of re-reading.
+
 > **🔴 YOU MUST EXECUTE THIS SECTION BEFORE FINALIZING YOUR REPORT.**
 > **🔴 IF YOU ALREADY PRODUCED THE EXECUTIVE SUMMARY ABOVE, YOU ARE NOT DONE.**
 > **🔴 THIS IS THE MOST IMPORTANT PART OF THE ENTIRE REVIEW.**
@@ -254,6 +258,7 @@ SPRINT 3 — BACKLOG (Tech Debt):
   ❑ 6. Search for NEW patterns not in OWASP API Top 10 (current year CVEs)
   ❑ 7. Check for logical flaws (business logic bypass)
   ❑ 8. Verify ALL "no issues found" claims from Phases 1-16
+  □ Fresh-Eyes includes view_file tool calls as proof of re-reading
 ```
 
 ### Fresh-Eyes Report Format:
