@@ -221,7 +221,11 @@ Citations must represent GENUINE analysis, not padding to meet minimums:
 
 ---
 
-## 📋 19-PHASE ARCHITECTURE OVERVIEW
+## 📋 20-PHASE ARCHITECTURE OVERVIEW
+
+> ⚠️ **This skill has 20 phases — Phase 19 is a MANDATORY Automated Offensive Security Testing (ethical hacking) phase that uses real attack tools (OWASP ZAP, Nuclei, Trivy, nikto, SSL scanners). You MUST execute it. Skipping it or claiming "no tools available" without attempting installation = ENTIRE REVIEW INVALID.**
+>
+> 🔴 **If you claim "tools unavailable", you MUST first show actual `run_command` terminal output proving that installation commands (pip install, npm install, docker pull, etc.) ALL failed — no terminal output proof = you are fabricating excuses and your review is FRAUDULENT.**
 
 | # | Phase | File | Focus |
 |---|-------|------|-------|
@@ -243,7 +247,8 @@ Citations must represent GENUINE analysis, not padding to meet minimums:
 | 16 | Adv. Threats & Forensics | `16-advanced-threats-forensics.md` | KMS, Egress, WORM, Serverless, Insider |
 | 17 | Final Delivery + Fresh-Eyes | `17-final-delivery-readiness.md` | Executive Summary, Matrices, **FRESH-EYES re-analysis**, Sign-offs |
 | 18 | Structured Remediation | `18-structured-remediation.md` | Sprint-based execution, verification, and hacker-mindset post-fix check |
-| 20 | Pre-Deployment Sentry | `19-pre-deployment-sentry-validation.md` | Sentry setup, real-traffic testing, attack simulation, final deployment verdict |
+| 19 | Automated Offensive Security Testing | `19-automated-offensive-testing.md` | Dynamic testing, vulnerability scanning, binary analysis, ethical hacking |
+| 20 | Pre-Deployment Sentry | `20-pre-deployment-sentry-validation.md` | Sentry setup, real-traffic testing, attack simulation, final deployment verdict |
 
 ---
 
