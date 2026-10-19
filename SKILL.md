@@ -11,6 +11,10 @@ description: >
   raised citation minimums per phase (193 total minimum), hacker-mindset post-fix verification (Rule R6),
   and cross-phase references to prevent AI hallucination, laziness, and ensure cutting-edge security auditing.
   Built to prevent AI from skipping checks, making false claims, or producing incomplete analysis.
+  Includes Rule 16 (Background Task Completion — no premature conclusions before async tasks finish),
+  Rule 17 (WordPress/CMS Deep Audit — database user roles, plugin CVE checks, cron job analysis),
+  Mechanism 5 (N/A Phase Justification — prevents batch-skipping applicable phases),
+  and Mechanism 6 (External-Internal Cross-Reference — links external scan findings to internal code).
 ---
 
 # 🌐 Backend & Cloud Comprehensive Auditor (Master Edition)
@@ -244,6 +248,65 @@ Citations must represent GENUINE analysis, not padding to meet minimums:
 ❌ NEVER count a citation unless you have the actual file content from view_file
 ```
 
+### Rule 16: BACKGROUND TASK COMPLETION — NO PREMATURE CONCLUSIONS
+When running background tasks (search commands, scans, database queries), you MUST wait for
+ALL tasks to complete BEFORE declaring a phase result or moving to the next phase.
+
+```
+🚨 THIS RULE EXISTS BECAUSE: In a real audit, an agent declared "سليمة" (clean) for a phase
+   while a background malware-search task was STILL RUNNING. The user caught this error.
+   Premature conclusions can cause you to MISS CRITICAL FINDINGS.
+
+❌ NEVER declare a phase "clean" or "سليمة" while ANY background task for that phase is still running
+❌ NEVER say "النتيجة: سليم" until you have verified ALL task outputs
+❌ NEVER summarize partial results as final results
+❌ NEVER assume a running task will return clean results
+✅ ALWAYS check task status with manage_task before concluding a phase
+✅ ALWAYS wait for task completion messages before writing the phase summary
+✅ If a task is still running, TELL THE USER you are waiting and DO NOT write the conclusion yet
+✅ If you launched N tasks, you must have N completion confirmations before concluding
+```
+
+**VERIFICATION:** If your phase conclusion does not have completion confirmations for ALL
+background tasks launched during that phase, your conclusion is PREMATURE and INVALID.
+
+### Rule 17: WORDPRESS & CMS DEEP AUDIT PROTOCOL
+When auditing WordPress (or any CMS) sites, standard code-only analysis is INSUFFICIENT.
+You MUST perform these additional CMS-specific checks:
+
+```
+🔴 DATABASE ANALYSIS (when SQL dump is available):
+   ✅ Extract and list ALL users from wp_users — check for suspicious accounts
+   ✅ Cross-reference wp_usermeta to verify ROLES of ALL users (especially 'administrator')
+   ✅ Check wp_options for: siteurl/home tampering, injected cron jobs, rogue active_plugins
+   ✅ Search wp_posts content for injected <script> tags, iframes, and spam links
+   ✅ Search wp_options for base64-encoded or obfuscated values in widget/theme settings
+   ❌ NEVER declare database "clean" without checking ALL 5 items above
+
+🔴 PLUGIN VULNERABILITY ANALYSIS:
+   ✅ For EVERY installed plugin, identify its version number
+   ✅ Run a web search for "[plugin-name] [version] vulnerability CVE" for HIGH-RISK plugins
+   ✅ HIGH-RISK plugins that ALWAYS require deep inspection:
+      - wp-file-manager (elFinder RCE — CVE-2020-25213 and variants)
+      - contact-form-7 (file upload vulnerabilities)
+      - elementor (RCE and privilege escalation)
+      - wpforms / formidable (SQL injection variants)
+      - any file upload or file manager plugin
+   ✅ Check plugin files for eval(), base64_decode(), and obfuscated code
+   ❌ NEVER skip version checking for installed plugins
+   ❌ NEVER mark a plugin as "safe" without verifying its version against known CVEs
+
+🔴 EMPTY DIRECTORY ANALYSIS:
+   ✅ When you find empty plugin/theme directories, flag them as SUSPICIOUS
+   ✅ Explain they may be remnants of deleted malware (attacker cleanup)
+   ✅ Recommend deletion with documentation of their names for forensic records
+
+🔴 SENSITIVE FILE EXPOSURE:
+   ✅ Check for exposed: readme.html, license.txt, wp-config-sample.php, xmlrpc.php
+   ✅ Check for backup files: .htaccess.bk, wp-config.php.bak, *.sql in public directories
+   ✅ Check for debug.log, error_log files that may leak server paths and credentials
+```
+
 ---
 
 ## 📋 20-PHASE ARCHITECTURE OVERVIEW
@@ -376,6 +439,45 @@ Later phases MUST reference findings from earlier phases:
 - Phase 12 (Infrastructure) should reference concurrency issues from Phase 7
 
 If no cross-references exist, you likely didn't review earlier phases thoroughly.
+
+### Mechanism 5: N/A Phase Justification (Anti-Skip)
+When marking a phase as "N/A" (Not Applicable), you MUST:
+
+```
+✅ Explain WHY the phase does not apply to this specific project
+✅ List at least 2 sub-checks from that phase that you verified are truly inapplicable
+✅ Consider if ANY part of the phase could apply in a simplified form
+❌ NEVER mark more than 50% of total phases as N/A without explicit user approval
+❌ NEVER mark a phase N/A just because the project is "simple" or "shared hosting"
+❌ NEVER batch-skip phases — evaluate EACH phase individually
+
+🚨 THIS RULE EXISTS BECAUSE: In a real audit, an agent skipped 13 out of 20 phases
+   by claiming they were all "N/A for shared hosting." Several of those phases
+   (Secret Management, Authentication, Logging) WERE applicable and contained
+   findings that were missed entirely.
+
+PHASES THAT ARE ALMOST NEVER N/A (regardless of hosting type):
+   - Authentication & Access Control (Phase 8)
+   - Security Defenses (Phase 9)
+   - Observability & Logging (Phase 11)
+   - Compliance & Privacy (Phase 13)
+   These phases apply to ALL projects. If you skip them, justify with PROOF.
+```
+
+### Mechanism 6: External-Internal Cross-Reference
+When an external scan or previous audit has been performed on the same target:
+
+```
+✅ You MUST cross-reference external findings with internal code analysis
+✅ For each external finding, locate the corresponding code/config internally
+✅ Verify if external findings are TRUE POSITIVES by examining the actual source
+✅ Document which external findings were CONFIRMED vs FALSE POSITIVES
+❌ NEVER ignore previous scan results when performing internal analysis
+❌ NEVER treat external and internal audits as independent — they complement each other
+
+EXAMPLE: If an external scan found "WP2Shell RCE vulnerability," the internal audit
+MUST locate the wp2shell plugin files and verify if the vulnerable version is installed.
+```
 
 ---
 
